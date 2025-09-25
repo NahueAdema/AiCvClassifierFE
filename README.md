@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📄 CV Analyzer Frontend
 
-## Getting Started
+Este es el **frontend** de una aplicación hecha en **Next.js** que permite subir y analizar CVs utilizando un modelo de **IA** .
 
-First, run the development server:
+El sistema envía los archivos y la información al **backend** (API) encargado del análisis y muestra los resultados de manera clara y organizada.
+
+---
+
+## 🚀 Tecnologías utilizadas
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+
+---
+
+## ⚙️ Requisitos previos
+
+Antes de comenzar, asegurate de tener instalado:
+
+- [Node.js](https://nodejs.org/) (versión recomendada: 18 o superior)
+- [npm](https://www.npmjs.com/) o [yarn](https://yarnpkg.com/)
+
+---
+
+## 📦 Instalación
+
+1. Clonar el repositorio:
+
+   ```bash
+   git clone https://github.com/tuusuario/cv-analyzer-frontend.git
+   cd cv-analyzer-frontend
+   ```
+
+2. Instalar dependencias:
+
+   ```bash
+   npm install
+   # o
+   yarn install
+   ```
+
+3. Crear un archivo **`.env.local`** en la raíz del proyecto y agregar la URL de tu API:
+
+   ```env
+   NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
+   ```
+
+   > ⚠️ Asegúrate de que la URL coincida con la dirección donde está corriendo tu backend (FastAPI, Flask, etc.).
+
+---
+
+## ▶️ Ejecutar en desarrollo
 
 ```bash
 npm run dev
-# or
+# o
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+El proyecto estará disponible en [http://localhost:3000](http://localhost:3000/).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Build para producción
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Estructura básica del proyecto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+cv-analyzer-frontend/
+├── components/      # Componentes reutilizables
+├── pages/           # Rutas y vistas principales
+├── services/        # Llamadas a la API
+├── types/           # Definición de tipos TypeScript
+├── public/          # Archivos estáticos
+└── .env.local       # Variables de entorno
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✅ Flujo de uso
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Subir un archivo **CV en PDF/DOCX** .
+2. El frontend lo envía al backend configurado en `NEXT_PUBLIC_API_URL`.
+3. La IA analiza el CV en función de los requisitos del puesto.
+4. Se muestran los resultados en pantalla.
