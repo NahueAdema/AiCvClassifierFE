@@ -480,6 +480,87 @@ export default function CVResults({ result }: CVResultsProps) {
                     </p>
                   )}
                 </div>
+
+                {/* 🔥 ÁREAS DE MEJORA Y ADVERTENCIAS (SOLO SI NO ES APTO) */}
+                {result.predicted_class.toLowerCase() !== "apto" && (
+                  <div className="space-y-4 mt-6">
+                    <h4 className="font-bold text-gray-900 text-lg flex items-center gap-2">
+                      <svg
+                        className="w-4 h-4 text-red-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                        />
+                      </svg>
+                      Áreas de Mejora
+                    </h4>
+                    <div className="space-y-2">
+                      {result.detailed_analysis?.areas_for_improvement?.map(
+                        (concern, index) => (
+                          <div
+                            key={index}
+                            className="flex items-start gap-3 p-3 bg-red-50 rounded-lg border border-red-200"
+                          >
+                            <div className="w-2 h-2 bg-red-500 rounded-full mt-1.5 flex-shrink-0"></div>
+                            <p className="text-gray-700 text-sm leading-relaxed">
+                              {concern}
+                            </p>
+                          </div>
+                        )
+                      )}
+                      {(!result.detailed_analysis?.areas_for_improvement ||
+                        result.detailed_analysis.areas_for_improvement
+                          .length === 0) && (
+                        <p className="text-gray-500 text-sm">
+                          No se identificaron áreas de mejora específicas
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Advertencias (red flags) */}
+                    {result.detailed_analysis?.technical_breakdown?.red_flags &&
+                      result.detailed_analysis.technical_breakdown.red_flags
+                        .length > 0 && (
+                        <div className="space-y-2 mt-4">
+                          <h4 className="font-bold text-gray-900 text-lg flex items-center gap-2">
+                            <svg
+                              className="w-4 h-4 text-orange-600"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                              />
+                            </svg>
+                            Advertencias
+                          </h4>
+                          {result.detailed_analysis.technical_breakdown.red_flags.map(
+                            (flag, index) => (
+                              <div
+                                key={index}
+                                className="flex items-start gap-3 p-3 bg-orange-50 rounded-lg border border-orange-200"
+                              >
+                                <div className="w-2 h-2 bg-orange-500 rounded-full mt-1.5 flex-shrink-0"></div>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                  {flag}
+                                </p>
+                              </div>
+                            )
+                          )}
+                        </div>
+                      )}
+                  </div>
+                )}
               </div>
 
               <div className="space-y-4">
