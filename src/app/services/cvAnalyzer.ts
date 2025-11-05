@@ -1,6 +1,6 @@
 import { CVAnalysisResponse } from "@/types/api";
 
-const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/analyze-cv`;
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/analyze-cv`;
 
 export class CVAnalyzerService {
   static async analyzeCV(
